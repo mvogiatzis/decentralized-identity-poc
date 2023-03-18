@@ -6,8 +6,7 @@
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "generate-keys": "node keys-generator.js",
-      "generate-did": "node did-generator.js",
-      "resolve": "node did-resolver.js"
+      "generate-did": "node did-generator.js"
     },
     "type": "module",
     "repository": {
