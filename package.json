@@ -6,7 +6,8 @@
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "generate-keys": "node keys-generator.js",
-      "generate-did": "node did-generator.js"
+      "generate-did": "node did-generator.js",
+      "resolve": "node did-resolver.js"
     },
     "type": "module",
     "repository": {
@@ -20,7 +21,9 @@
     },
     "homepage": "https://github.com/mvogiatzis/digital-identity-poc#readme",
     "dependencies": {
-      "elliptic": "^6.5.4"
+      "elliptic": "^6.5.4",
+      "did-jwt": "^6.11.5",
+      "web-did-resolver": "^2.0.21"
     }
   }
   

@@ -1,15 +1,12 @@
-
-console.log('\n============ Creating the DID document ============\n');
-
 const did = 'did:web:mvogiatzis.github.io';
 
 // pass your jwk to be used for DID verification
 const jwk = {
-    kty: 'EC',
-    crv: 'secp256k1',
-    x: 'SaXGNTcN5mo8a8aeWe9z3Q0gnn9vvIbBrRVmamOXVi8=',
-    y: '008mwiX2Jpw7TJYspSZR9hnkdOKSeRipSE66UKwUTuI='
-  }
+  kty: 'EC',
+  crv: 'secp256k1',
+  x: 'pfAR6TZaDL/iyUBOmdrAIy/1ZmNiis5zrVFuH4805pI=',
+  y: '0nGC9a7kn4a6KBausSUKqdaHppbbSmHGR80nk0G4LJQ='
+}
 
 var document = createDidDocument(did, jwk);
 
