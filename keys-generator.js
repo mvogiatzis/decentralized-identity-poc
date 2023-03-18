@@ -9,14 +9,17 @@ const ec = new elliptic.ec(ecParam);
 const keyPair = ec.keyFromPrivate(randomBytesHex,'hex');
 const publicKey = keyPair.getPublic();
 
-console.log('Bytes used to generate key=%s', randomBytesHex);
+// print key details
+console.log('Private key=%s', randomBytesHex);
 console.log('Public key=%s', keyPair.getPublic('hex'));
 
-// print to construct DID JWK verification
-console.log('x hex=%s', getXBuffer(publicKey, 'hex'));
-console.log('y hex=%s', getYBuffer(publicKey, 'hex'));
-console.log('x base64=%s', getXBuffer(publicKey, 'base64'));
-console.log('y base64=%s', getYBuffer(publicKey, 'base64'));
+// print jwk
+console.log('publicKeyJwk: %s', {
+    "kty": "EC",
+    "crv": "secp256k1",
+    "x": getXBuffer(publicKey, 'base64'),
+    "y": getYBuffer(publicKey, 'base64')
+  });
 
 function getXBuffer(publicKey, encoding) {
     return publicKey.x.toBuffer().toString(encoding);

@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "generate-keys": "node key-generator.js"
+      "generate-keys": "node keys-generator.js",
+      "generate-did": "node did-generator.js"
     },
     "type": "module",
     "repository": {
