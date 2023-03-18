@@ -1,0 +1,25 @@
+{
+    "name": "digital-identity-poc",
+    "version": "1.0.0",
+    "description": "Issue DID, credentials and verify them",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "generate-keys": "node key-generator.js"
+    },
+    "type": "module",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/mvogiatzis/digital-identity-poc.git"
+    },
+    "author": "Michael V",
+    "license": "Apache-2.0",
+    "bugs": {
+      "url": "https://github.com/mvogiatzis/digital-identity-poc/issues"
+    },
+    "homepage": "https://github.com/mvogiatzis/digital-identity-poc#readme",
+    "dependencies": {
+      "elliptic": "^6.5.4"
+    }
+  }
+  
