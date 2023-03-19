@@ -2,15 +2,15 @@ import crypto from 'crypto';
 import elliptic from 'elliptic';
 
 const ecParam = 'secp256k1';
-const randomBytesHex = crypto.randomBytes(32).toString("hex");
+const privateKeyBytesHex = crypto.randomBytes(32).toString("hex");
 
 // create private-public keys
 const ec = new elliptic.ec(ecParam);
-const keyPair = ec.keyFromPrivate(randomBytesHex,'hex');
+const keyPair = ec.keyFromPrivate(privateKeyBytesHex,'hex');
 const publicKey = keyPair.getPublic();
 
 // print key details
-console.log('Private key=%s', randomBytesHex);
+console.log('Private key=%s', privateKeyBytesHex);
 console.log('Public key=%s', keyPair.getPublic('hex'));
 
 // print jwk

@@ -6,7 +6,8 @@
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "generate-keys": "node keys-generator.js",
-      "generate-did": "node did-generator.js"
+      "generate-did": "node did-generator.js",
+      "issue-vc": "node credentials.js"
     },
     "type": "module",
     "repository": {
@@ -22,7 +23,8 @@
     "dependencies": {
       "elliptic": "^6.5.4",
       "did-jwt": "^6.11.5",
-      "web-did-resolver": "^2.0.21"
+      "web-did-resolver": "^2.0.21",
+      "did-jwt-vc": "^3.1.2"
     }
   }
   

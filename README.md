@@ -5,19 +5,23 @@ You can
 * Create private/public keys
 * Generate a Decentralized Identity (DID) document
 * Publish your DID on Github
-* Issue Verifiable Claims and Verify them
+* Issue Verifiable Credentials
+* Issue Verifiable Presentations
+* Verify VC and VPs
 
 
 Create your keys
 ------------------
 
-First create a private and public key using the Ed2559 digital signature algorithm which uses elliptic curve cryptography.
+First create a private and public key using the Ed2559 digital signature algorithm.
 
 To get the private / public key pair, run:
 
 `npm run generate-keys`
 
-You should also get a helper JWK output to be used in the DID generation.
+Copy your private key.
+
+You should also get a helper JWK output to be used in the DID generation. Copy that too.
 
 Generate a DID document
 -----------------------
@@ -30,7 +34,7 @@ Run `npm run generate-did`
 
 This will output a DID like this:
 
-```ts
+```json
 {
   "@context": [
     "https://www.w3.org/ns/did/v1",
@@ -59,29 +63,101 @@ This will output a DID like this:
 }
 ```
 
-Publish your DID
--------------------
+Publish your DID document
+-------------------------
 
 Now publish your DID document so that it can be resolved later.
+
+For the sake of simplicity, I use a `web` type of DID.
 
 The [DID web method spec](https://w3c-ccg.github.io/did-method-web/#example-creating-the-did) expects us to have a well-known URI for `did:web` DIDs.
 
 So `did:web:<domain>` resolves to `https://<domain>/.well-known/did.json`.
 
-Using Github pages is easy and free. You can host your did there.
+You can host your DID on Github Pages. It's easy and free.
 
 Mine is uploaded here: https://mvogiatzis.github.io/.well-known/did.json
 
+ Optional: You can sign and verify your DID using the web resolver from the [did-jwt](https://github.com/decentralized-identity/did-jwt) lib.
 
-Side note: There's a useful [did-jwt](https://github.com/decentralized-identity/did-jwt) module to create, sign and verify JWTs.
+Create Verifiable Credentials and Presentation
+---------------------------------------------
 
-Create Verifiable Credentials
------------------------------------
+Create your Verifiable Credentials and Verifiable Presentation by running:
 
-TBC
+`npm run issue-vc`
+
+This will create your Verifiable Credential and sign it using your private key (from the previous keys step. 
+
+You will get a Verifiable Credentials JWT.
+
+For example:
+
+```
+eyJhbGciOiJFUzI1NksiLCJ0eXAiOiJKV1QifQ.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvMjAxOC9jcmVkZW50aWFscy92MSJdLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIl0sImNyZWRlbnRpYWxTdWJqZWN0Ijp7Im5hbWUiOiJNaWNoYWVsIFZvZ2lhdHppcyIsImpvYlRpdGxlIjoiRGVGaSBBdXRob3Jpc2VkIFRyYWRlciIsImV4cGlyeURhdGUiOiIyMDI1LTAxLTAxIn19LCJzdWIiOiJkaWQ6d2ViOm12b2dpYXR6aXMuZ2l0aHViLmlvIiwibmJmIjoxNjc5MjI2MDAyLCJpc3MiOiJkaWQ6d2ViOm12b2dpYXR6aXMuZ2l0aHViLmlvIn0.aZjl4s_mt58hUgr5sMBxB0hHjYSINa1IZ9RUQ0PVDJvnJLj_TNmYMhIk1SxWzZt6tzKhyjxbi9YcdbqxGx5WYw
+```
+
+You can enter your VC JWT on JWT.io to decode it.
+
+Here's my example payload:
+
+```json
+{
+  "vc": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1"
+    ],
+    "type": [
+      "VerifiableCredential"
+    ],
+    "credentialSubject": {
+      "name": "Michael Vogiatzis",
+      "jobTitle": "DeFi Authorised Trader",
+      "expiryDate": "2025-01-01"
+    }
+  },
+  "sub": "did:web:mvogiatzis.github.io",
+  "nbf": 1679226002,
+  "iss": "did:web:mvogiatzis.github.io"
+}
+```
+
+The module will also create your Verifiable Presentation, signed again by an issuer (in my case, it's me).
+
+You can again, decode the Verifiable Presentation JWT and get something like: 
+
+```json
+{
+  "vp": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1"
+    ],
+    "type": [
+      "VerifiablePresentation"
+    ],
+    "verifiableCredential": [
+      "eyJhbGciOiJFUzI1NksiLCJ0eXAiOiJKV1QifQ.eyJ2YyI6eyJAY29udGV4dCI6WyJodHRwczovL3d3dy53My5vcmcvMjAxOC9jcmVkZW50aWFscy92MSJdLCJ0eXBlIjpbIlZlcmlmaWFibGVDcmVkZW50aWFsIl0sImNyZWRlbnRpYWxTdWJqZWN0Ijp7Im5hbWUiOiJNaWNoYWVsIFZvZ2lhdHppcyIsImpvYlRpdGxlIjoiRGVGaSBBdXRob3Jpc2VkIFRyYWRlciIsImV4cGlyeURhdGUiOiIyMDI1LTAxLTAxIn19LCJzdWIiOiJkaWQ6d2ViOm12b2dpYXR6aXMuZ2l0aHViLmlvIiwibmJmIjoxNjc5MjI2MDAyLCJpc3MiOiJkaWQ6d2ViOm12b2dpYXR6aXMuZ2l0aHViLmlvIn0.aZjl4s_mt58hUgr5sMBxB0hHjYSINa1IZ9RUQ0PVDJvnJLj_TNmYMhIk1SxWzZt6tzKhyjxbi9YcdbqxGx5WYw"
+    ]
+  },
+  "iss": "did:web:mvogiatzis.github.io"
+}
+```
+
+### Testing
+
+For testing purposes, the module issuing the credentials will also verify the Verifiable Credentials and Verifiable Presentation.
+
+It will print out `verified: true` together with the DID resolution. 
+
+For this step I'm using the [did-jwt-vc](https://github.com/decentralized-identity/did-jwt-vc) library which allows you to create and verify W3C Verifiable Credentials and Presentations in JWT format.
 
 
+Notes
+-------
 
+1. I used the same issuer to issue and sign the Verifiable Credentials and the Verifiable Presentation. In reality, the issuer - holder - verifier might be different. See [trust triangle](https://en.wikipedia.org/wiki/Verifiable_credentials#/media/File:VC_triangle_of_Trust.svg.).
+
+2. I used JSON Web tokens and Web DIDs. But you can change the `DID` to be stored in a blockchain (i.e. `did:ethr`) and use an eth resolver instead.
 
 
 
