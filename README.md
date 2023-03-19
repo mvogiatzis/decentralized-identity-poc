@@ -4,9 +4,8 @@ You can
 
 * Create private/public keys
 * Generate a Decentralized Identity (DID) document
-* Publish your DID on Github
-* Issue Verifiable Credentials
-* Issue Verifiable Presentations
+* Publish your DID document on Github
+* Issue Verifiable Credentials (VC) and Verifiable Presentations (VP)
 * Verify VC and VPs
 
 
@@ -85,13 +84,13 @@ Mine is uploaded here: https://mvogiatzis.github.io/.well-known/did.json
 Create Verifiable Credentials and Presentation
 ---------------------------------------------
 
-Create your Verifiable Credentials and Verifiable Presentation by running:
+Create your `Verifiable Credentials` and `Verifiable Presentation` by running:
 
 `npm run issue-vc`
 
-This will create your Verifiable Credential and sign it using your private key (from the previous keys step. 
+This will create your `Verifiable Credential` and sign it using your private key (from the previous keys step. 
 
-You will get a Verifiable Credentials JWT.
+You will get a `Verifiable Credentials` JWT.
 
 For example:
 
@@ -161,5 +160,11 @@ Notes
 
 2. I used JSON Web tokens and Web DIDs. But you can change the `DID` to be stored in a blockchain (i.e. `did:ethr`) and use an eth resolver instead.
 
+Resources
+----------
+
+1. [Decentralized Identity JS libraries](https://github.com/decentralized-identity/)
+2. [Wiki verifiable credentials](https://en.wikipedia.org/wiki/Verifiable_credentials)
+3. [did:web method spec](https://w3c-ccg.github.io/did-method-web/)
 
 
