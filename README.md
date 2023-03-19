@@ -66,9 +66,11 @@ This will output a DID like this:
 Publish your DID document
 -------------------------
 
-Now publish your DID document so that it can be resolved later.
+For your DID to be available, you need to publish it.
 
-For the sake of simplicity, I use a `web` type of DID.
+This is needed so that people can verify it.
+
+For the sake of simplicity, I used a `web` type of DID.
 
 The [DID web method spec](https://w3c-ccg.github.io/did-method-web/#example-creating-the-did) expects us to have a well-known URI for `did:web` DIDs.
 
