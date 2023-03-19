@@ -1,4 +1,4 @@
-# A Digital Identity Prototype
+# A Decentralised Identity PoC
 
 This is a proof of concept that allows anyone to create a Decentralised Identity (DID) and issue Verifiable Credentials.
 
