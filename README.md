@@ -1,6 +1,6 @@
-# A Decentralised Identity PoC
+# A Decentralized Identity PoC
 
-This is a proof of concept that allows anyone to create a Decentralised Identity (DID) and issue Verifiable Credentials.
+This is a proof of concept that allows anyone to create a Decentralized Identity (DID) and issue Verifiable Credentials.
 
 For example, a company can issue a DID document and Verifiable Credentials to an authorised DeFi trader.
 
