@@ -1,13 +1,18 @@
 # A Digital Identity Prototype
 
-You can
+This is a proof of concept that allows anyone to create a Decentralised Identity (DID) and issue Verifiable Credentials.
+
+For example, a company can issue a DID document and Verifiable Credentials to an authorised DeFi trader.
+
+The trader can then present them to a trading platform to get access. The trading platform can verify the trader's credentials and presentation to allow trading access.
+
+In this project you can:
 
 * Create private/public keys
 * Generate a Decentralized Identity (DID) document
 * Publish your DID document on Github
 * Issue Verifiable Credentials (VC) and Verifiable Presentations (VP)
 * Verify VC and VPs
-
 
 Create your keys
 ------------------
@@ -158,7 +163,7 @@ Notes
 
 1. I used the same issuer to issue and sign the Verifiable Credentials and the Verifiable Presentation. In reality, the issuer - holder - verifier might be different. See [trust triangle](https://en.wikipedia.org/wiki/Verifiable_credentials#/media/File:VC_triangle_of_Trust.svg.).
 
-2. I used JSON Web tokens and Web DIDs. But you can change the `DID` to be stored in a blockchain (i.e. `did:ethr`) and use an eth resolver instead.
+2. I used JSON Web tokens and Web DIDs. But you can change the `DID` document to be stored in a blockchain (i.e. `did:ethr`) and use an eth resolver instead.
 
 Resources
 ----------
