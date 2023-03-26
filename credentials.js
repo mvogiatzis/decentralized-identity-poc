@@ -4,6 +4,8 @@ import { Resolver } from 'did-resolver'
 import { getResolver } from 'web-did-resolver'
 
 // First create an issuer to use when creating the Verifiable Credentials
+
+// For demo purposes only. Replace your key with an env variable. for example, process.env.PRIVATE_KEY
 const key = '52d0d4779e48db2dfbafca9106357754e1eb77747adaf2ae8258f034a56bcfe9';
 const issuer = {
     did: 'did:web:mvogiatzis.github.io',
